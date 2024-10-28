@@ -4,6 +4,14 @@ import ServicesCard from "./ServicesCard";
 const Services = () => {
   const [services, setServices] = useState([]);
 
+  const [openLoad, setOpenLoad] = useState(6);
+
+  const handleLoad = () => {
+    setOpenLoad(openLoad + openLoad);
+  };
+
+  const load = services.slice(0, openLoad);
+
   useEffect(() => {
     fetch("services.json")
       .then((res) => res.json())
@@ -21,11 +29,18 @@ const Services = () => {
           believable.
         </p>
       </div>
-
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {services.map((service) => (
+        {load.map((service) => (
           <ServicesCard key={service._id} service={service}></ServicesCard>
         ))}
+      </div>
+      <div className="my-10 border flex justify-center mx-auto bg-blue-600 hover:bg-red-500 border-orange-400 w-48 h-16 rounded-lg">
+        <button
+          onClick={() => handleLoad()}
+          className="text-2xl  text-center font-bold text-white"
+        >
+          More Services
+        </button>
       </div>
     </div>
   );
