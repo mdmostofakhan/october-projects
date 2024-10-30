@@ -37,7 +37,7 @@ const Services = () => {
       <div className="my-10 border flex justify-center mx-auto bg-blue-600 hover:bg-red-500 border-orange-400 w-48 h-16 rounded-lg">
         <button
           onClick={() => handleLoad()}
-          className="text-2xl  text-center font-bold text-white"
+          className="text-2xl font-bold text-white"
         >
           More Services
         </button>
